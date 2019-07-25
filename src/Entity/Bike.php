@@ -84,6 +84,11 @@ class Bike
         $this->reservations = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getBrand() . " " . $this->getModel() . " (" . $this->getMatriculation() . ")";
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -177,6 +182,28 @@ class Bike
     {
         return $this->status;
     }
+
+    /**
+     * @return string
+     */
+    public function getStatusTransKey(): string
+    {
+        $status = $this->getStatus();
+
+        if($status == 1){
+            return 'bike.entity.status.available.label';
+        } elseif ($status == 2){
+            return 'bike.entity.status.unavailable.label';
+        } elseif ($status == 3){
+            return 'bike.entity.status.repair.label';
+        } elseif ($status == 4){
+            return 'bike.entity.status.crashed.label';
+        } else {
+            return 'bike.entity.status.default.label';
+        }
+    }
+
+
 
     public function setStatus(?int $status): self
     {

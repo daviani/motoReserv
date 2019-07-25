@@ -33,3 +33,28 @@ bike:
     new:
         title:
             label: "Ajouter une moto"
+    entity:
+        status:
+            available:
+                label: "Disponible"
+            unavailable:
+                label: "Indisponible"
+            repair:
+                label: "En réparation"
+            crashed:
+                label: "Épave"
+            default:
+                label: "Standard"
+
+person:
+    gender:
+        male:
+            label: "Homme"
+        female:
+            label: "Femme"
+        apache_copter:
+            label: "OuloCoupoutair"
+        other:
+            label: "Autre"
+        unknown:
+            label: "Inconnu"

@@ -92,4 +92,16 @@ class BikeController extends AbstractController
 
         return $this->redirectToRoute('bike_index');
     }
+
+    /**
+     * @Route("/status/{status_number}", name="bike_list_status", methods={"GET"})
+     */
+    public function listByStatus(BikeRepository $bikeRepository, int $status_number): Response
+    {
+
+
+        return $this->render('bike/index.html.twig', [
+            'bikes' => $bikeRepository->findBy(['status'=> $status_number]),
+        ]);
+    }
 }
