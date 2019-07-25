@@ -22,7 +22,7 @@ class BikeType extends AbstractType
             ->add('productionYear', DateType::class, [
                 'widget' => 'choice',
                 'input_format' => 'Y',
-                'data' => new \DateTime(),
+                'years' => range('1970', date('Y'),1),
             ])
             ->add('status')
             ->add('tags')

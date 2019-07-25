@@ -1,4 +1,15 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+   {{ form_row(form.brand) }}
+   {{ form_row(form.model) }}
+   {{ form_row(form.matriculation) }}
+   {{ form_row(form.color) }}
+   {{ form_row(form.power) }}
+   {{ form_row(form.km) }}
+   {{ form_row(form.productionYear.year) }}
+   {{ form_row(form.productionYear.month, { 'label':false,'attr': {'style': 'display:none'} }) }}
+   {{ form_row(form.productionYear.day, { 'label':false,'attr': {'style': 'display:none'} }) }}
+   {{ form_row(form.status) }}
+   {{ form_row(form.tags) }}
+   {{ form_row(form.bikeOwner) }}
+<button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
