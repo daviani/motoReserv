@@ -31,7 +31,7 @@
                 <td>{{ bike.power }}</td>
                 <td>{{ bike.km }}</td>
                 <td>{{ bike.productionYear ? bike.productionYear|date('Y') : '' }}</td>
-                <td>{{ bike.status }}</td>
+                <td>{{ bike.statusTransKey|trans }}</td>
                 <td>
                     <a href="{{ path('bike_show', {'id': bike.id}) }}">show</a>
                     <a href="{{ path('bike_edit', {'id': bike.id}) }}">edit</a>

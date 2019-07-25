@@ -62,6 +62,26 @@ class Person
         return $this->gender;
     }
 
+    /**
+     * @return string
+     */
+    public function getGenderTransKey(): string
+    {
+        $gender = $this->getGender();
+
+        if($gender == 1){
+            return 'person.gender.male.label';
+        } elseif ($gender == 2){
+            return 'person.gender.female.label';
+        } elseif ($gender == 3){
+            return 'person.gender.apache_copter.label';
+        } elseif ($gender == 4){
+            return 'person.gender.other.label';
+        } else {
+            return 'person.gender.unknown.label';
+        }
+    }
+
     public function setGender(int $gender): self
     {
         $this->gender = $gender;

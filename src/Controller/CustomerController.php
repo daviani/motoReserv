@@ -31,6 +31,8 @@ class CustomerController extends AbstractController
     public function new(Request $request): Response
     {
         $customer = new Customer();
+        $customer->setCreatedAt(new \DateTime());
+        $customer->setPassword('1245dsddsh');
         $form = $this->createForm(CustomerType::class, $customer);
         $form->handleRequest($request);
 
