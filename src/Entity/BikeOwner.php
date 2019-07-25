@@ -21,6 +21,11 @@ class BikeOwner extends Person
      */
     private $bike;
 
+public function __toString()
+{
+return $this ->getFirstName()." ". $this->getLastName();
+}
+
     public function getId(): ?int
     {
         return $this->id;
