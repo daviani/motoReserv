@@ -22,7 +22,7 @@ class Reservation
     private $trackDate;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $createAt;
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+
 /** @ORM\MappedSuperclass() */
 class Person
 {
@@ -61,6 +62,17 @@ class Person
     public function getGender(): ?int
     {
         return $this->gender;
+    }
+
+    public function getGenderTransKey(): string
+    {
+        if ($gender = $this->getGender()  == 1) {
+            return 'Male';
+        } elseif ($gender === 2) {
+            return 'Femelle';
+        } else {
+            return 'Ouloucopter';
+        }
     }
 
     public function setGender(int $gender): self

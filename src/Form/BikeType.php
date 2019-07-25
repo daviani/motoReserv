@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Bike;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -25,7 +26,14 @@ class BikeType extends AbstractType
                 'format' => 'y-M-d',
                 'years' => range('1970', date('Y'), 1),
             ])
-            ->add('status')
+            ->add('status', ChoiceType::class, [
+                'choices' => [
+                    'Free' => 1,
+                    'noFree' => 2,
+                    'reparation' => 3,
+                    'crashedOfTheDead' => 4,
+                ],
+            ])
             ->add('Tags')
             ->add('bikeOwner');
     }

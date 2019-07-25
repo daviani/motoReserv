@@ -84,6 +84,11 @@ class Bike
         $this->reservations = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getBrand() . " " . $this->getModel() . "(" . $this->getModel() . ")";
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -176,6 +181,20 @@ class Bike
     public function getStatus(): ?int
     {
         return $this->status;
+    }
+
+    public function getStatusTransKey(): string
+    {
+        $status = $this->getStatus();
+        if ($status === 1) {
+            return 'Free';
+        } elseif ($status === 2) {
+            return 'noFree';
+        } elseif ($status === 3) {
+            return 'reparation';
+        } else {
+            return 'crashOfTheDead';
+        }
     }
 
     public function setStatus(?int $status): self
