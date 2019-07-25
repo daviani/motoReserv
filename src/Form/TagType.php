@@ -12,8 +12,9 @@ class TagType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('bikes')
+            ->add('name', null, [
+                'label'=> 'tag.form.input.name.label',
+            ])
         ;
     }
 
@@ -21,6 +22,7 @@ class TagType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Tag::class,
+            'translation_domain' => 'messages'
         ]);
     }
 }

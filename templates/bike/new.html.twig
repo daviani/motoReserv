@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'bike.new.title.label'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <h1>{{ 'bike.new.title.label'|trans }}</h1>
+            </div>
+            <div class="col-12 col-md-8">
+                {{ include('bike/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <a href="{{ path('bike_index') }}">back to list</a>
+{% endblock %}

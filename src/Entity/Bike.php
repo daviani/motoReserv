@@ -49,7 +49,7 @@ class Bike
     private $km;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $productionYear;
 

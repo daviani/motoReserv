@@ -50,13 +50,13 @@ class ManualTagController extends AbstractController
      */
     public function newManualTag(){
         $tag = new Tag();
-        $tag->setName('SC project');
+        $tag->setName('Trail');
 
         $this->em->persist($tag);
         $this->em->flush();
 
         return $this->render('manual_tag/show.html.twig', [
-
+            'tag' => $tag,
         ]);
     }
 }
