@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BikeOwner index{% endblock %}
+
+{% block body %}
+    <h1>BikeOwner index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Gender</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>PostalCode</th>
+                <th>Mail</th>
+                <th>Phone</th>
+                <th>BithDate</th>
+                <th>CreatedAt</th>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bike_owner in bike_owners %}
+            <tr>
+                <td>{{ bike_owner.gender }}</td>
+                <td>{{ bike_owner.firstName }}</td>
+                <td>{{ bike_owner.lastName }}</td>
+                <td>{{ bike_owner.address }}</td>
+                <td>{{ bike_owner.city }}</td>
+                <td>{{ bike_owner.postalCode }}</td>
+                <td>{{ bike_owner.mail }}</td>
+                <td>{{ bike_owner.phone }}</td>
+                <td>{{ bike_owner.bithDate }}</td>
+                <td>{{ bike_owner.createdAt ? bike_owner.createdAt|date('Y-m-d') : '' }}</td>
+                <td>{{ bike_owner.id }}</td>
+                <td>
+                    <a href="{{ path('bike_owner_show', {'id': bike_owner.id}) }}">show</a>
+                    <a href="{{ path('bike_owner_edit', {'id': bike_owner.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('bike_owner_new') }}">Create new</a>
+{% endblock %}

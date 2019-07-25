@@ -17,7 +17,6 @@
                 <th>Km</th>
                 <th>ProductionYear</th>
                 <th>Status</th>
-                <th>CreateAt</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -31,9 +30,8 @@
                 <td>{{ bike.color }}</td>
                 <td>{{ bike.power }}</td>
                 <td>{{ bike.km }}</td>
-                <td>{{ bike.productionYear ? bike.productionYear|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ bike.productionYear ? bike.productionYear|date('Y') : '' }}</td>
                 <td>{{ bike.status }}</td>
-                <td>{{ bike.createAt ? bike.createAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('bike_show', {'id': bike.id}) }}">show</a>
                     <a href="{{ path('bike_edit', {'id': bike.id}) }}">edit</a>

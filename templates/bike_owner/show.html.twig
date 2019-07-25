@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BikeOwner{% endblock %}
+
+{% block body %}
+    <h1>BikeOwner</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Gender</th>
+                <td>{{ bike_owner.gender }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ bike_owner.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ bike_owner.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ bike_owner.address }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ bike_owner.city }}</td>
+            </tr>
+            <tr>
+                <th>PostalCode</th>
+                <td>{{ bike_owner.postalCode }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ bike_owner.mail }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ bike_owner.phone }}</td>
+            </tr>
+            <tr>
+                <th>BithDate</th>
+                <td>{{ bike_owner.bithDate }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ bike_owner.createdAt ? bike_owner.createdAt|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ bike_owner.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('bike_owner_index') }}">back to list</a>
+
+    <a href="{{ path('bike_owner_edit', {'id': bike_owner.id}) }}">edit</a>
+
+    {{ include('bike_owner/_delete_form.html.twig') }}
+{% endblock %}
