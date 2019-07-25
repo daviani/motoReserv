@@ -1,3 +1,28 @@
+header:
+    title:
+        label: "Circuit ADREC"
+    menu:
+        item:
+            tag:
+                label: "Tags"
+            bike:
+                label: "Motos"
+
 home:
     title:
         label: "Bienvenue sur le site du circuit ADREC"
+
+
+tag:
+    new:
+        title:
+            label: "Créer un nouveau tag"
+    form:
+        input:
+            name:
+                label: "Nom"
+
+bike:
+    new:
+        title:
+            label: "Ajouter une moto"
