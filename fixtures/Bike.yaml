@@ -1,0 +1,12 @@
+App\Entity\Bike:
+    bike{0..59}:
+        brand: '<randomElement(["Suzuki", "Harley", "Honda"])>'
+        model: '<word()>'
+        matriculation: '<ean8()>'
+        color: '<randomElement(["red", "green", "blue", "grey", "black"])>'
+        power: '<randomFloat(2, 1, 999)>'
+        km: '75%? <numberBetween(10, 50000)>'
+        productionYear: '<dateTimeBetween("-60 years", "-1 years")>'
+        status: '<numberBetween(1, 5)>'
+        createAt: '<dateTimeBetween("-5 years", "-1 weeks")>'
+        tags: '3x @tag*'
