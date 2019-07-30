@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method Bike|null findOneBy(array $criteria, array $orderBy = null)
  * @method Bike[]    findAll()
  * @method Bike[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Bike[]    findByStatus($status)
  */
 class BikeRepository extends ServiceEntityRepository
 {
