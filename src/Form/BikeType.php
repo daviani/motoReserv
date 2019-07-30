@@ -42,6 +42,9 @@ class BikeType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Bike::class,
+            'attr' => [
+                'novalidate' => 'novalidate',
+            ]
         ]);
     }
 }
