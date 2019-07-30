@@ -1,0 +1,7 @@
+App\Entity\Reservation:
+    reservation{0..265}:
+        tackDate: '<dateTimeBetween("-1 years", "-3 days")>'
+        createdAt: '<dateTimeBetween("-2 years", "-1 month")>'
+        status: '<numberBetween(1,5)>'
+        bike: '@bike*'
+        customer: '@customer*'

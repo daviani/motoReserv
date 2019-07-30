@@ -1,0 +1,11 @@
+App\Entity\Person:
+    person (template):
+        gender: '<numberBetween(1,3)>'
+        firstName: '<firstName()>'
+        lastName: '<lastName()>'
+        address: '<streetAddress()>'
+        city: '<city()>'
+        postalCode: '<postcode()>'
+        mail: '<email()>'
+        phone: '60%? <e164PhoneNumber()>'
+        createdAt: '<dateTimeBetween("-10 years", "-1 weeks")>'
