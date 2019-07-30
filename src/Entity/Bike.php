@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BikeRepository")
@@ -20,26 +21,31 @@ class Bike
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $brand;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $model;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $matriculation;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $color;
 
     /**
      * @ORM\Column(type="decimal", precision=5, scale=2)
+     * @Assert\NotBlank()
      */
     private $power;
 
@@ -50,6 +56,7 @@ class Bike
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank()
      */
     private $productionYear;
 
@@ -60,6 +67,7 @@ class Bike
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
     private $createAt;
 
