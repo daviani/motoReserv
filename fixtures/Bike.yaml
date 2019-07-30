@@ -9,4 +9,4 @@ App\Entity\Bike:
         productionYear: '<dateTimeBetween("-60 years", "-1 years")>'
         status: '<numberBetween(1, 5)>'
         createAt: '<dateTimeBetween("-5 years", "-1 weeks")>'
-        tags: '3x @tag*'
+        tags: '<numberBetween(1, 4)>x @tag*'

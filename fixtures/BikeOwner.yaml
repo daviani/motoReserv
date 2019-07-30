@@ -1,0 +1,3 @@
+App\Entity\BikeOwner:
+    personBikeOwner{0..41} (extends person):
+        bike: '@bike<current()>'

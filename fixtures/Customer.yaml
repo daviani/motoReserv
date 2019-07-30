@@ -1,0 +1,3 @@
+App\Entity\Customer:
+    customer{0..523} (extends person):
+        password: '<password()>'
