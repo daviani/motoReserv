@@ -101,7 +101,7 @@ class BikeController extends AbstractController
 
 
         return $this->render('bike/index.html.twig', [
-            'bikes' => $bikeRepository->findBy(['status'=> $status_number]),
+            'bikes' => $bikeRepository->findByStatus($status_number),
         ]);
     }
 }
