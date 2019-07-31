@@ -22,6 +22,29 @@ class AdminCreateUserCommand extends Command
         ;
     }
 
+    protected function interact(InputInterface $input, OutputInterface $output)
+    {
+        $io = new SymfonyStyle($input, $output);
+        
+        $email = $input->getArgument('email');
+        
+        if (null === $email) {
+            $email = $io->ask('Admin\'s email');
+            $input->setArgument('email', $email);
+        }
+        
+        $io->text('Admin\'s email: '.$email);
+
+        $password = $input->getArgument('password');
+
+        if (null === $password) {
+            $password = $io->ask('Admin\'s password');
+            $input->setArgument('password', $password);
+        }
+
+        $io->text('Admin\'s password: '.$password);
+    }
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
