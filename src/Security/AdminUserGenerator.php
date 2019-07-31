@@ -12,6 +12,8 @@
 namespace App\Security;
 
 use App\Entity\AdminUser;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * Class AdminUserGenerator
@@ -21,6 +23,27 @@ use App\Entity\AdminUser;
 class AdminUserGenerator
 {
     /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
+    /**
+     * @var UserPasswordEncoderInterface
+     */
+    private $encoder;
+
+    /**
+     * AdminUserGenerator constructor.
+     * @param EntityManagerInterface $em
+     * @param UserPasswordEncoderInterface $encoder
+     */
+    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
+    {
+        $this->em = $em;
+        $this->encoder = $encoder;
+    }
+
+    /**
      * @param string $email
      * @param string $plainPassword
      * @return AdminUser
@@ -29,7 +52,12 @@ class AdminUserGenerator
     {
         $adminUser = new AdminUser();
         $adminUser->setEmail($email);
-        $adminUser->setPassword($plainPassword);
+
+        $password = $this->encoder->encodePassword($adminUser, $plainPassword);
+        $adminUser->setPassword($password);
+
+        $this->em->persist($adminUser);
+        $this->em->flush();
 
         return $adminUser;
     }
