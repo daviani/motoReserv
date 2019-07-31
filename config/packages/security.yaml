@@ -16,11 +16,13 @@ security:
             security: false
         main:
             anonymous: true
+            form_login:
+                login_path: admin_login
             guard:
                 authenticators:
                     - App\Security\AdminUserAuthenticator
             logout:
-                path: app_logout
+                path: admin_logout
                 # where to redirect after logout
                 # target: app_any_route
 
