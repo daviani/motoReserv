@@ -78,7 +78,10 @@ class AdminCreateUserCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $adminUser = $this->generator->createAdmin($input->getArgument('email'), $input->getArgument('password'));
+        $adminUser = $this->generator->createAdmin(
+            $input->getArgument('email'),
+            $input->getArgument('password')
+        );
 
         $io->success('Admin user created.');
     }
