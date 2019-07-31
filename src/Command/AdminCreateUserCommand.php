@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Entity\AdminUser;
+use App\Security\AdminUserGenerator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
@@ -13,6 +14,21 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class AdminCreateUserCommand extends Command
 {
     protected static $defaultName = 'app:admin:create-user';
+
+    /**
+     * @var AdminUserGenerator
+     */
+    private $generator;
+
+    /**
+     * AdminCreateUserCommand constructor.
+     * @param AdminUserGenerator $generator
+     */
+    public function __construct(AdminUserGenerator $generator)
+    {
+        parent::__construct();
+        $this->generator = $generator;
+    }
 
     protected function configure()
     {
@@ -62,9 +78,7 @@ class AdminCreateUserCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $adminUser = new AdminUser();
-        $adminUser->setEmail($input->getArgument('email'));
-        $adminUser->setPassword($input->getArgument('password'));
+        $adminUser = $this->generator->createAdmin($input->getArgument('email'), $input->getArgument('password'));
 
         $io->success('Admin user created.');
     }
