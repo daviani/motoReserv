@@ -8,6 +8,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
@@ -36,6 +37,7 @@ class AdminCreateUserCommand extends Command
             ->setDescription('Create a new Admin user.')
             ->addArgument('email', InputArgument::OPTIONAL, 'User\'s email.')
             ->addArgument('password', InputArgument::OPTIONAL, 'User\'s password.')
+            ->addOption('super-admin', 's', InputOption::VALUE_NONE, 'Is admin super?')
         ;
     }
 
@@ -82,6 +84,10 @@ class AdminCreateUserCommand extends Command
             $input->getArgument('email'),
             $input->getArgument('password')
         );
+
+        if ($input->getOption('super-admin')) {
+            $this->generator->promoteSuperAdmin($adminUser);
+        }
 
         $io->success('Admin user created.');
     }

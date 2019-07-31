@@ -61,4 +61,18 @@ class AdminUserGenerator
 
         return $adminUser;
     }
+
+    /**
+     * @param AdminUser $adminUser
+     */
+    public function promoteSuperAdmin(AdminUser $adminUser): void
+    {
+        $roles = $adminUser->getRoles();
+        $roles[] = 'ROLE_SUPER_ADMIN';
+
+        $adminUser->setRoles(array_unique($roles));
+
+        $this->em->persist($adminUser);
+        $this->em->flush();
+    }
 }
