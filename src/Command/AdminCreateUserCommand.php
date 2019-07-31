@@ -4,6 +4,7 @@ namespace App\Command;
 
 use App\Entity\AdminUser;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -29,7 +30,13 @@ class AdminCreateUserCommand extends Command
         $email = $input->getArgument('email');
         
         if (null === $email) {
-            $email = $io->ask('Admin\'s email');
+            $email = $io->ask('Admin\'s email', null, function ($value) {
+                if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                    throw new InvalidArgumentException('Invalid email.');
+                }
+
+                return $value;
+            });
             $input->setArgument('email', $email);
         }
         
@@ -38,7 +45,13 @@ class AdminCreateUserCommand extends Command
         $password = $input->getArgument('password');
 
         if (null === $password) {
-            $password = $io->ask('Admin\'s password');
+            $password = $io->ask('Admin\'s password', null, function ($value) {
+                if (empty($value)) {
+                    throw new InvalidArgumentException('Invalid password.');
+                }
+
+                return $value;
+            });
             $input->setArgument('password', $password);
         }
 
