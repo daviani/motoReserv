@@ -8,15 +8,22 @@ use PHPUnit\Framework\TestCase;
 
 class TagTest extends TestCase
 {
-    public function testNameGetterSetter()
+    /**
+     * @param string $name
+     *
+     * @dataProvider getNameTests
+     */
+    public function testNameGetterSetter(string $name)
     {
         $tag = new Tag();
 
         $this->assertNull($tag->getName());
 
-        $tag->setName('foo');
+        $tag->setName($name);
+        $this->assertSame($name, $tag->getName());
 
-        $this->assertSame('foo', $tag->getName());
+        $this->expectException(\TypeError::class);
+        $tag->setName(new \stdClass());
     }
 
     public function testToString()
@@ -42,5 +49,15 @@ class TagTest extends TestCase
         $tag->removeBike($bike);
 
         $this->assertTrue(!$tag->getBikes()->contains($bike));
+    }
+
+    public function getNameTests()
+    {
+        return [
+            ['foo'],
+            ['bar'],
+            ['titi'],
+            ['FOObar'],
+        ];
     }
 }
