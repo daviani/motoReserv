@@ -20,6 +20,8 @@ class Customer extends Person
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="8",max="255")
      */
     private $password;
 
