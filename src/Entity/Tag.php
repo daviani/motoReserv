@@ -20,6 +20,8 @@ class Tag
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="1",max="255")
      */
     private $name;
 
