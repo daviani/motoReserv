@@ -10,7 +10,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TagRepository")
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *          "get"={"method"="GET", "path"="/bike-tags"}
+ *      },
+ *     itemOperations={"get"}
+ * )
  */
 class Tag
 {
