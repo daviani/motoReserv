@@ -13,6 +13,29 @@ class AdminUserGeneratorTest extends TestCase
 {
     public function testCreateAdmin()
     {
+        $generator = $this->getGeneratorMock();
+
+        $adminUser = $generator->createAdmin('foo@bar.fr', '1234');
+
+        $this->assertInstanceOf(AdminUser::class, $adminUser);
+        $this->assertSame('foo@bar.fr', $adminUser->getEmail());
+        $this->assertSame('pass_hash', $adminUser->getPassword());
+    }
+
+    public function testPromoteSuperAdmin()
+    {
+        $generator = $this->getGeneratorMock();
+        $adminUser = new AdminUser();
+
+        $this->assertTrue(!in_array('ROLE_SUPER_ADMIN', $adminUser->getRoles()));
+
+        $generator->promoteSuperAdmin($adminUser);
+
+        $this->assertTrue(in_array('ROLE_SUPER_ADMIN', $adminUser->getRoles()));
+    }
+
+    private function getGeneratorMock(): AdminUserGenerator
+    {
         /** @var EntityManagerInterface $em */
         $em = $this->getMockBuilder(EntityManagerInterface::class)
             ->getMock();
@@ -25,13 +48,6 @@ class AdminUserGeneratorTest extends TestCase
             ->method('encodePassword')
             ->willReturn('pass_hash');
 
-        $generator = new AdminUserGenerator($em, $encoder);
-
-        $adminUser = $generator->createAdmin('foo@bar.fr', '1234');
-
-        $this->assertInstanceOf(AdminUser::class, $adminUser);
-
-        $this->assertSame('foo@bar.fr', $adminUser->getEmail());
-        $this->assertSame('pass_hash', $adminUser->getPassword());
+        return new AdminUserGenerator($em, $encoder);
     }
 }
