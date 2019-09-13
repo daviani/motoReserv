@@ -28,5 +28,10 @@ class BikeControllerTest extends WebTestCase
         $response = $client->getResponse();
 
         $this->assertEquals(200, $response->getStatusCode());
+
+        $client->request('POST', '/bike/');
+        $response = $client->getResponse();
+
+        $this->assertEquals(405, $response->getStatusCode());
     }
 }
