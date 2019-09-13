@@ -34,4 +34,15 @@ class BikeControllerTest extends WebTestCase
 
         $this->assertEquals(405, $response->getStatusCode());
     }
+
+    public function testIndexTitle()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/bike/');
+
+        $h1 = $crawler->filter('h1');
+
+        $this->assertCount(1, $h1);
+    }
 }
